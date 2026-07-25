@@ -1,0 +1,290 @@
+.about-page{
+    max-width:1200px;
+    margin:40px auto;
+    padding:20px;
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+    color:#1e293b;
+}
+
+/* ===========================
+   Page Heading
+=========================== */
+
+.about-heading{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.about-heading h1{
+    font-size:42px;
+    color:#0f172a;
+    margin-bottom:10px;
+}
+
+.about-heading p{
+    color:#64748b;
+    font-size:17px;
+}
+
+/* ===========================
+   Hero Section
+=========================== */
+
+.about-hero{
+    background:#ffffff;
+    border-radius:18px;
+    padding:45px 35px;
+    text-align:center;
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+    margin-bottom:45px;
+}
+
+.about-logo{
+    width:90px;
+    height:90px;
+    margin:auto;
+    border-radius:50%;
+    background:#2563eb;
+    color:#fff;
+    font-size:42px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:20px;
+}
+
+.about-hero h1{
+    font-size:34px;
+    color:#0f172a;
+    margin-bottom:15px;
+}
+
+.about-hero p{
+    max-width:700px;
+    margin:auto;
+    color:#64748b;
+    line-height:1.8;
+    font-size:17px;
+}
+
+/* ===========================
+   Feature Cards
+=========================== */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+    margin-bottom:45px;
+}
+
+.about-card{
+    background:#fff;
+    padding:28px;
+    border-radius:18px;
+    text-align:center;
+    transition:.35s;
+    box-shadow:0 8px 20px rgba(0,0,0,.07);
+}
+
+.about-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 35px rgba(37,99,235,.18);
+}
+
+.about-card span{
+    font-size:45px;
+    display:block;
+    margin-bottom:18px;
+}
+
+.about-card h3{
+    margin-bottom:12px;
+    color:#1e3a8a;
+}
+
+.about-card p{
+    color:#64748b;
+    line-height:1.7;
+}
+
+/* ===========================
+   Technology Section
+=========================== */
+
+.technology-card{
+    background:#fff;
+    border-radius:18px;
+    padding:30px;
+    margin-bottom:45px;
+    box-shadow:0 10px 25px rgba(0,0,0,.07);
+}
+
+.technology-card h2{
+    margin-bottom:25px;
+    color:#0f172a;
+}
+
+.technology-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.technology-list span{
+    padding:10px 22px;
+    background:#eef4ff;
+    color:#2563eb;
+    border-radius:30px;
+    font-weight:600;
+    transition:.3s;
+    cursor:pointer;
+}
+
+.technology-list span:hover{
+    background:#2563eb;
+    color:#fff;
+    transform:translateY(-3px);
+}
+
+/* ===========================
+   Architecture Section
+=========================== */
+
+.about-project{
+    background:#fff;
+    padding:35px;
+    border-radius:18px;
+    box-shadow:0 12px 28px rgba(0,0,0,.08);
+}
+
+.about-project h2{
+    margin-bottom:35px;
+    color:#0f172a;
+}
+
+/* Architecture Layout */
+
+.architecture{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+/* Card */
+
+.architecture-card{
+    width:220px;
+    min-height:190px;
+    border-radius:18px;
+    background:#fff;
+    border:1px solid #dbe5f3;
+    padding:25px;
+    text-align:center;
+    transition:.35s;
+}
+
+.architecture-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 35px rgba(0,0,0,.12);
+}
+
+/* Backend Highlight */
+
+.backend-card{
+    border-top:5px solid #16a34a;
+}
+
+/* Icon */
+
+.architecture-icon{
+    width:40px;
+    height:40px;
+    margin:auto;
+    margin-bottom:18px;
+    border-radius:18px;
+    background:#f8fbff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:32px;
+}
+
+/* Title */
+
+.architecture-card strong{
+    display:block;
+    font-size:24px;
+    color:#183153;
+    margin-bottom:8px;
+}
+
+/* Subtitle */
+
+.architecture-card small{
+    color:#64748b;
+    font-size:15px;
+}
+
+/* Arrow */
+
+.architecture-arrow{
+    font-size:40px;
+    color:#2563eb;
+    font-weight:bold;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media(max-width:900px){
+
+    .architecture{
+        flex-direction:column;
+    }
+
+    .architecture-arrow{
+        transform:rotate(90deg);
+    }
+
+}
+
+@media(max-width:768px){
+
+    .about-heading h1{
+        font-size:34px;
+    }
+
+    .about-hero{
+        padding:35px 25px;
+    }
+
+    .about-hero h1{
+        font-size:28px;
+    }
+
+    .architecture-card{
+        width:100%;
+        max-width:320px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .about-page{
+        padding:15px;
+    }
+
+    .technology-list{
+        justify-content:center;
+    }
+
+    .about-card{
+        padding:22px;
+    }
+
+}

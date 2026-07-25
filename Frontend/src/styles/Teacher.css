@@ -1,0 +1,245 @@
+/* ===========================
+   PAGE
+=========================== */
+
+.teacher-page {
+    padding: 40px;
+    background: #f4f7fb;
+    min-height: 100vh;
+}
+
+.teacher-heading {
+    margin-bottom: 30px;
+}
+
+.teacher-heading h1 {
+    font-size: 40px;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.teacher-heading p {
+    color: #64748b;
+    font-size: 18px;
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.teacher-form-card {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+/* ===========================
+   SECTION TITLE
+=========================== */
+
+.teacher-section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 25px;
+    border-left: 5px solid #2563eb;
+    padding-left: 12px;
+}
+
+/* ===========================
+   GRID
+=========================== */
+
+.teacher-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 28px;
+    margin-bottom: 35px;
+}
+
+/* ===========================
+   FORM GROUP
+=========================== */
+
+.teacher-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.teacher-form-group label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 8px;
+}
+
+/* ===========================
+   INPUTS
+=========================== */
+
+.teacher-form-group input,
+.teacher-form-group select,
+.teacher-form-group textarea {
+
+    width: 100%;
+    padding: 13px 15px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+
+    font-size: 15px;
+    background: #fff;
+
+    transition: .3s;
+}
+
+.teacher-form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.teacher-form-group input:focus,
+.teacher-form-group select:focus,
+.teacher-form-group textarea:focus {
+
+    outline: none;
+
+    border-color: #2563eb;
+
+    box-shadow: 0 0 0 4px rgba(37,99,235,.15);
+}
+
+/* ===========================
+   FULL WIDTH
+=========================== */
+
+.teacher-full-width {
+    grid-column: 1 / -1;
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.teacher-buttons {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 15px;
+
+    margin-top: 25px;
+}
+
+.teacher-reset,
+.teacher-primary {
+
+    border: none;
+
+    padding: 13px 30px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    transition: .3s;
+}
+
+.teacher-reset {
+
+    background: #e5e7eb;
+
+    color: #374151;
+}
+
+.teacher-reset:hover {
+
+    background: #d1d5db;
+}
+
+.teacher-primary {
+
+    background: #2563eb;
+
+    color: white;
+}
+
+.teacher-primary:hover {
+
+    background: #1d4ed8;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 18px rgba(37,99,235,.3);
+}
+
+/* ===========================
+   SUCCESS MESSAGE
+=========================== */
+
+.teacher-success {
+
+    margin-top: 25px;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    background: #dcfce7;
+
+    color: #166534;
+
+    font-weight: 600;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width:900px){
+
+.teacher-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.teacher-full-width{
+
+grid-column:auto;
+
+}
+
+.teacher-buttons{
+
+justify-content:center;
+
+flex-wrap:wrap;
+
+}
+
+.teacher-heading h1{
+
+font-size:32px;
+
+}
+
+.teacher-page{
+
+padding:25px;
+
+}
+
+.teacher-form-card{
+
+padding:25px;
+
+}
+
+}

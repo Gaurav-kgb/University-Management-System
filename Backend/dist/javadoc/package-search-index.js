@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"university.management.system"},{"l":"university.management.system.api"},{"l":"university.management.system.dao"},{"l":"university.management.system.model"}];updateSearchResults();

@@ -1,0 +1,353 @@
+/* ========================================
+   STUDENT LEAVE PAGE
+======================================== */
+
+.student-leave-page {
+  width: 100%;
+
+  height: calc(100vh - 65px);
+
+  padding: 25px 30px 60px;
+
+  background: #f4f7fb;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  box-sizing: border-box;
+}
+
+/* ========================================
+   PAGE HEADING
+======================================== */
+
+.student-leave-heading {
+  margin-bottom: 25px;
+}
+
+.student-leave-heading h1 {
+  margin: 0 0 7px;
+
+  color: #1e293b;
+
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.student-leave-heading p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 14px;
+}
+
+/* ========================================
+   FORM CARD
+======================================== */
+
+.student-leave-form {
+  width: 100%;
+
+  padding: 30px;
+
+  background: #ffffff;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 3px 15px rgba(0, 0, 0, 0.07);
+
+  box-sizing: border-box;
+}
+
+/* ========================================
+   SECTION TITLE
+======================================== */
+
+.student-leave-section-title {
+  margin-bottom: 22px;
+
+  padding-bottom: 12px;
+
+  border-bottom: 1px solid #e2e8f0;
+
+  color: #1e3a5f;
+
+  font-size: 19px;
+
+  font-weight: 700;
+}
+
+/* Space before Leave Information */
+
+.student-leave-second-title {
+  margin-top: 38px;
+}
+
+/* ========================================
+   TWO COLUMN GRID
+======================================== */
+
+.student-leave-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  column-gap: 35px;
+
+  row-gap: 24px;
+
+  width: 100%;
+}
+
+/* ========================================
+   FORM GROUP
+======================================== */
+
+.student-leave-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 9px;
+
+  width: 100%;
+}
+
+/* Labels */
+
+.student-leave-group label {
+  display: block;
+
+  color: #334155;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+/* ========================================
+   INPUTS
+======================================== */
+
+.student-leave-group input,
+.student-leave-group select,
+.student-leave-group textarea {
+  width: 100%;
+
+  padding: 11px 13px;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 7px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #1e293b;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 14px;
+
+  box-sizing: border-box;
+
+  transition: 0.2s;
+}
+
+/* Input and Select Height */
+
+.student-leave-group input,
+.student-leave-group select {
+  height: 44px;
+}
+
+/* Placeholder */
+
+.student-leave-group input::placeholder,
+.student-leave-group textarea::placeholder {
+  color: #94a3b8;
+}
+
+/* Focus */
+
+.student-leave-group input:focus,
+.student-leave-group select:focus,
+.student-leave-group textarea:focus {
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* ========================================
+   REASON FOR LEAVE
+======================================== */
+
+.student-leave-reason {
+  grid-column: 1 / -1;
+
+  margin-top: 2px;
+}
+
+.student-leave-reason textarea {
+  width: 100%;
+
+  min-height: 110px;
+
+  padding: 13px 14px;
+
+  line-height: 1.5;
+
+  resize: vertical;
+}
+
+/* ========================================
+   SUCCESS MESSAGE
+======================================== */
+
+.student-leave-success {
+  margin-top: 25px;
+
+  padding: 12px 15px;
+
+  background: #dcfce7;
+
+  border: 1px solid #bbf7d0;
+
+  border-radius: 7px;
+
+  color: #15803d;
+
+  font-size: 14px;
+}
+
+/* ========================================
+   BUTTON SECTION
+======================================== */
+
+.student-leave-buttons {
+  display: flex;
+
+  justify-content: flex-end;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-top: 30px;
+
+  padding-top: 22px;
+
+  border-top: 1px solid #e2e8f0;
+}
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+.student-leave-reset,
+.student-leave-submit {
+  min-width: 125px;
+
+  height: 42px;
+
+  padding: 0 20px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+/* Reset */
+
+.student-leave-reset {
+  background: #e2e8f0;
+
+  color: #334155;
+}
+
+.student-leave-reset:hover {
+  background: #cbd5e1;
+}
+
+/* Submit */
+
+.student-leave-submit {
+  background: #1557a0;
+
+  color: #ffffff;
+}
+
+.student-leave-submit:hover {
+  background: #0d4079;
+
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   SCROLLBAR
+======================================== */
+
+.student-leave-page::-webkit-scrollbar {
+  width: 7px;
+}
+
+.student-leave-page::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.student-leave-page::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+
+  border-radius: 10px;
+}
+
+.student-leave-page::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+
+  .student-leave-page {
+    padding: 20px;
+  }
+
+  .student-leave-form {
+    padding: 22px;
+  }
+
+  .student-leave-grid {
+    grid-template-columns: 1fr;
+
+    row-gap: 20px;
+  }
+
+  .student-leave-reason {
+    grid-column: auto;
+  }
+
+  .student-leave-buttons {
+    justify-content: stretch;
+  }
+
+  .student-leave-reset,
+  .student-leave-submit {
+    flex: 1;
+  }
+}
