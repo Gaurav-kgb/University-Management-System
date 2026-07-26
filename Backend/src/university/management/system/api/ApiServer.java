@@ -13,9 +13,17 @@ public class ApiServer {
 
                 try {
 
+                        String portEnv = System.getenv("PORT");
+
+                        int port = (portEnv != null)
+                                        ? Integer.parseInt(portEnv)
+                                        : 8080;
+
                         HttpServer server = HttpServer.create(
-                                        new InetSocketAddress(8080),
+                                        new InetSocketAddress("0.0.0.0", port),
                                         0);
+                        System.out.println(
+                                        "University Management System API running on port " + port);
 
                         // Health API
                         server.createContext(
