@@ -83,7 +83,7 @@ function StudentLeave() {
       setSubmitting(true);
 
       const response = await fetch(
-        "http://localhost:8080/api/student-leaves",
+        "https://university-management-system-kx5w.onrender.com/api/student-leaves",
         {
           method: "POST",
 

@@ -58,7 +58,7 @@ function TeacherLeave() {
       setError("");
 
       const response = await fetch(
-        "http://localhost:8080/api/teacher-leaves",
+        "https://university-management-system-kx5w.onrender.com/api/teacher-leaves",
         {
           method: "POST",
 

@@ -52,7 +52,7 @@ function AddStudent() {
 
     try {
       const response = await fetch(
-        "http://localhost:8080/api/students",
+        "https://university-management-system-kx5w.onrender.com/api/students",
         {
           method: "POST",
 

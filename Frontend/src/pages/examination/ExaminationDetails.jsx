@@ -17,7 +17,7 @@ function ExaminationDetails() {
       setLoading(true);
       setError("");
 
-      const response = await fetch("http://localhost:8080/api/marks");
+      const response = await fetch("https://university-management-system-kx5w.onrender.com/api/marks");
 
       if (!response.ok) {
         throw new Error("Unable to fetch marks");

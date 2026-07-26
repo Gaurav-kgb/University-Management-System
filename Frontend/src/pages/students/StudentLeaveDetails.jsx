@@ -23,6 +23,20 @@ function StudentLeaveDetails() {
         : leave
     );
 
+    const response = await fetch(
+        "https://university-management-system-kx5w.onrender.com/api/student-leaves",
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type": "application/json",
+          },
+
+          body: JSON.stringify(leave),
+        }
+      );
+
+
     setLeaves(updatedLeaves);
 
     localStorage.setItem(

@@ -50,7 +50,7 @@ function EnterMarks() {
     try {
 
       const response = await fetch(
-        "http://localhost:8080/api/marks",
+        "https://university-management-system-kx5w.onrender.com/api/marks",
         {
           method: "POST",
 

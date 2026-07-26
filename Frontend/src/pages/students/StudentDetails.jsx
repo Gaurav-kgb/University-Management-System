@@ -31,7 +31,7 @@ function StudentDetails() {
       setError("");
 
       const response = await fetch(
-        "http://localhost:8080/api/students"
+        "https://university-management-system-kx5w.onrender.com/students"
       );
 
       if (!response.ok) {

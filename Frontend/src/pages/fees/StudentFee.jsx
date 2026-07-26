@@ -39,7 +39,7 @@ function StudentFee() {
   useEffect(() => {
 
     fetch(
-      "http://localhost:8080/api/fees"
+      "https://university-management-system-kx5w.onrender.com/api/fees"
     )
       .then((response) => {
 
