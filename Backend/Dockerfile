@@ -11,4 +11,4 @@ COPY . .
 RUN ant clean
 RUN ant
 
-CMD ["java", "-cp", "build/classes:lib/mysql-connector-java.jar:Jar/jcalendar-tz-1.3.3-4.jar:Jar/rs2xml.jar", "university.management.system.api.ApiServer"]
+CMD ["java", "-cp", "build/classes:lib/mysql-connector-j-9.7.0.jar:Jar/jcalendar-tz-1.3.3-4.jar:Jar/rs2xml.jar", "university.management.system.api.ApiServer"]
