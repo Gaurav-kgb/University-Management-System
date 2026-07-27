@@ -13,7 +13,7 @@ public class ApiUtil {
 
     exchange.getResponseHeaders().set(
         "Access-Control-Allow-Origin",
-        "https://university-management-system-green.vercel.app"
+        "https://kgb-ums.vercel.app"
     );
 
     exchange.getResponseHeaders().set(
