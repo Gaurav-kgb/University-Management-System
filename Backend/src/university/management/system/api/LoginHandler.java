@@ -32,7 +32,7 @@ public class LoginHandler implements HttpHandler {
                 "Content-Type",
                 "application/json"
         );
-         ApiUtil.addCors(exchange);
+         
 
         // Handle browser CORS preflight request
         if ("OPTIONS".equalsIgnoreCase(exchange.getRequestMethod())) {
