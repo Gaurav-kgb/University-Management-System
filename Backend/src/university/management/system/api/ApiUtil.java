@@ -6,87 +6,119 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 
-
 public class ApiUtil {
 
+    // =========================================================
+    // CORS CONFIGURATION
+    // =========================================================
     public static void addCors(HttpExchange exchange) {
 
-    exchange.getResponseHeaders().set(
-        "Access-Control-Allow-Origin",
-        "https://kgb-ums.vercel.app"
-    );
+        exchange.getResponseHeaders().set(
+                "Access-Control-Allow-Origin",
+                "https://kgb-ums.vercel.app"
+        );
 
-    exchange.getResponseHeaders().set(
-        "Access-Control-Allow-Methods",
-        "GET, POST, PUT, DELETE, OPTIONS"
-    );
+        exchange.getResponseHeaders().set(
+                "Access-Control-Allow-Methods",
+                "GET, POST, PUT, DELETE, OPTIONS"
+        );
 
-    exchange.getResponseHeaders().set(
-        "Access-Control-Allow-Headers",
-        "Content-Type, Authorization"
-    );
-}
+        exchange.getResponseHeaders().set(
+                "Access-Control-Allow-Headers",
+                "Content-Type, Authorization"
+        );
+    }
 
-    public static String getJsonValue(String json, String key) {
 
-    String search = "\"" + key + "\":";
+    // =========================================================
+    // GET VALUE FROM SIMPLE JSON
+    // =========================================================
+    public static String getJsonValue(
+            String json,
+            String key) {
 
-    int start = json.indexOf(search);
+        if (json == null || key == null) {
+            return "";
+        }
 
-    if (start == -1) {
+        String search = "\"" + key + "\":";
+
+        int start = json.indexOf(search);
+
+        if (start == -1) {
+            return "";
+        }
+
+        start += search.length();
+
+        // Skip spaces
+        while (start < json.length()
+                && Character.isWhitespace(json.charAt(start))) {
+
+            start++;
+        }
+
+        if (start >= json.length()) {
+            return "";
+        }
+
+        // String value
+        if (json.charAt(start) == '"') {
+
+            start++;
+
+            int end = json.indexOf('"', start);
+
+            if (end == -1) {
+                return "";
+            }
+
+            return json.substring(start, end);
+        }
+
         return "";
     }
 
-    start += search.length();
 
-    while (start < json.length() &&
-           Character.isWhitespace(json.charAt(start))) {
-        start++;
+    // =========================================================
+    // SEND JSON RESPONSE
+    // =========================================================
+    public static void sendJson(
+            HttpExchange exchange,
+            int status,
+            String json) throws IOException {
+
+        addCors(exchange);
+
+        exchange.getResponseHeaders().set(
+                "Content-Type",
+                "application/json; charset=UTF-8"
+        );
+
+        byte[] response =
+                json.getBytes(StandardCharsets.UTF_8);
+
+        exchange.sendResponseHeaders(
+                status,
+                response.length
+        );
+
+        try (OutputStream os =
+                     exchange.getResponseBody()) {
+
+            os.write(response);
+        }
     }
 
-    if (json.charAt(start) == '"') {
 
-        start++;
-
-        int end = json.indexOf('"', start);
-
-        return json.substring(start, end);
-    }
-
-    return "";
-}
-
-   public static void sendJson(
-        HttpExchange exchange,
-        int status,
-        String json) throws IOException {
-
-    addCors(exchange);
-
-    exchange.getResponseHeaders().set(
-        "Content-Type",
-        "application/json; charset=UTF-8"
-    );
-
-    byte[] response =
-            json.getBytes(StandardCharsets.UTF_8);
-
-    exchange.sendResponseHeaders(
-            status,
-            response.length
-    );
-
-    try (OutputStream os =
-                 exchange.getResponseBody()) {
-
-        os.write(response);
-    }
-}
-
+    // =========================================================
+    // ESCAPE JSON STRING
+    // =========================================================
     public static String escape(String value) {
 
-        if (value == null)
+        if (value == null) {
             return "";
+        }
 
         return value
                 .replace("\\", "\\\\")
