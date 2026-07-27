@@ -111,7 +111,7 @@ function StudentDetails() {
       setMessage("");
 
       const response = await fetch(
-        `http://localhost:8080/api/students/${encodeURIComponent(
+        `https://university-management-system-kx5w.onrender.com/api/students/${encodeURIComponent(
           rollno
         )}`,
         {

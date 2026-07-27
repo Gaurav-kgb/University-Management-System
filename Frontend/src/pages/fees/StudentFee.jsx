@@ -157,7 +157,7 @@ function StudentFee() {
       setMessage("");
 
       const response = await fetch(
-        "http://localhost:8080/api/student-fees",
+        "https://university-management-system-kx5w.onrender.com/api/student-fees",
         {
           method: "POST",
 

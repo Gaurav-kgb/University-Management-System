@@ -53,7 +53,7 @@ function TeacherDetails() {
 
     try {
       const response = await fetch(
-        `http://localhost:8080/api/teachers/${encodeURIComponent(
+        `https://university-management-system-kx5w.onrender.com/api/teachers/${encodeURIComponent(
           empId
         )}`,
         {
