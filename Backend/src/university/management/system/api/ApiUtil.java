@@ -10,19 +10,19 @@ public class ApiUtil {
 
     public static void addCors(HttpExchange exchange) {
 
-    exchange.getResponseHeaders().add(
+    exchange.getResponseHeaders().set(
         "Access-Control-Allow-Origin",
-        "*"
+        "https://university-management-system-green.vercel.app"
     );
 
-    exchange.getResponseHeaders().add(
+    exchange.getResponseHeaders().set(
         "Access-Control-Allow-Methods",
         "GET, POST, PUT, DELETE, OPTIONS"
     );
 
-    exchange.getResponseHeaders().add(
+    exchange.getResponseHeaders().set(
         "Access-Control-Allow-Headers",
-        "Content-Type"
+        "Content-Type, Authorization"
     );
 }
 

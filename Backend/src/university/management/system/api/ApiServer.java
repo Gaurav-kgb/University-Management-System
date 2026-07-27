@@ -9,200 +9,142 @@ import java.nio.charset.StandardCharsets;
 
 public class ApiServer {
 
-    public static void main(String[] args) {
+        public static void main(String[] args) {
 
-        try {
+                try {
 
-            // Render provides PORT.
-            // Locally, fallback to 8080.
-            String portEnv = System.getenv("PORT");
+                        // Render provides PORT.
+                        // Locally, fallback to 8080.
+                        String portEnv = System.getenv("PORT");
 
-            int port = (portEnv != null)
-                    ? Integer.parseInt(portEnv)
-                    : 8080;
+                        int port = (portEnv != null)
+                                        ? Integer.parseInt(portEnv)
+                                        : 8080;
 
-            HttpServer server = HttpServer.create(
-                    new InetSocketAddress("0.0.0.0", port),
-                    0
-            );
+                        HttpServer server = HttpServer.create(
+                                        new InetSocketAddress("0.0.0.0", port),
+                                        0);
 
-            // ==============================
-            // HEALTH API
-            // ==============================
+                        // ==============================
+                        // HEALTH API
+                        // ==============================
 
-            server.createContext(
-                    "/api/health",
-                    exchange -> {
+                        server.createContext(
+                                        "/api/health",
+                                        exchange -> {
 
-                        // Handle CORS preflight
-                        if ("OPTIONS".equalsIgnoreCase(
-                                exchange.getRequestMethod())) {
+                                                ApiUtil.addCors(exchange);
 
-                            exchange.getResponseHeaders().add(
-                                    "Access-Control-Allow-Origin",
-                                    "*"
-                            );
+                                                String response = "University Management System Backend is running";
 
-                            exchange.getResponseHeaders().add(
-                                    "Access-Control-Allow-Methods",
-                                    "GET, POST, PUT, DELETE, OPTIONS"
-                            );
+                                                exchange.getResponseHeaders().add(
+                                                                "Content-Type",
+                                                                "text/plain; charset=UTF-8");
 
-                            exchange.getResponseHeaders().add(
-                                    "Access-Control-Allow-Headers",
-                                    "Content-Type"
-                            );
+                                                byte[] responseBytes = response.getBytes(StandardCharsets.UTF_8);
 
-                            exchange.sendResponseHeaders(204, -1);
-                            return;
-                        }
+                                                exchange.sendResponseHeaders(
+                                                                200,
+                                                                responseBytes.length);
 
-                        String response =
-                                "University Management System Backend is running";
+                                                try (OutputStream os = exchange.getResponseBody()) {
 
-                        exchange.getResponseHeaders().add(
-                                "Access-Control-Allow-Origin",
-                                "*"
-                        );
+                                                        os.write(responseBytes);
+                                                }
+                                        });
 
-                        exchange.getResponseHeaders().add(
-                                "Content-Type",
-                                "text/plain; charset=UTF-8"
-                        );
+                        // ==============================
+                        // API ROUTES
+                        // ==============================
 
-                        byte[] responseBytes =
-                                response.getBytes(
-                                        StandardCharsets.UTF_8
-                                );
+                        server.createContext(
+                                        "/api/login",
+                                        new LoginHandler());
 
-                        exchange.sendResponseHeaders(
-                                200,
-                                responseBytes.length
-                        );
+                        server.createContext(
+                                        "/api/students",
+                                        new StudentHandler());
 
-                        try (OutputStream os =
-                                     exchange.getResponseBody()) {
+                        server.createContext(
+                                        "/api/teachers",
+                                        new TeacherHandler());
 
-                            os.write(responseBytes);
-                        }
-                    }
-            );
+                        server.createContext(
+                                        "/api/teacher-leaves",
+                                        new TeacherLeaveHandler());
 
-            // ==============================
-            // API ROUTES
-            // ==============================
+                        server.createContext(
+                                        "/api/student-leaves",
+                                        new StudentLeaveHandler());
 
-            server.createContext(
-                    "/api/login",
-                    new LoginHandler()
-            );
+                        server.createContext(
+                                        "/api/marks",
+                                        new MarksHandler());
 
-            server.createContext(
-                    "/api/students",
-                    new StudentHandler()
-            );
+                        server.createContext(
+                                        "/api/fees",
+                                        new FeeHandler());
 
-            server.createContext(
-                    "/api/teachers",
-                    new TeacherHandler()
-            );
+                        server.createContext(
+                                        "/api/student-fees",
+                                        new StudentFeeHandler());
 
-            server.createContext(
-                    "/api/teacher-leaves",
-                    new TeacherLeaveHandler()
-            );
+                        server.setExecutor(null);
 
-            server.createContext(
-                    "/api/student-leaves",
-                    new StudentLeaveHandler()
-            );
+                        // ==============================
+                        // START SERVER
+                        // ==============================
 
-            server.createContext(
-                    "/api/marks",
-                    new MarksHandler()
-            );
+                        server.start();
 
-            server.createContext(
-                    "/api/fees",
-                    new FeeHandler()
-            );
+                        System.out.println(
+                                        "----------------------------------------");
 
-            server.createContext(
-                    "/api/student-fees",
-                    new StudentFeeHandler()
-            );
+                        System.out.println(
+                                        "University Management System API");
 
-            server.setExecutor(null);
+                        System.out.println(
+                                        "Backend started successfully");
 
-            // ==============================
-            // START SERVER
-            // ==============================
+                        System.out.println(
+                                        "Server listening on 0.0.0.0:" + port);
 
-            server.start();
+                        System.out.println(
+                                        "Health endpoint: /api/health");
 
-            System.out.println(
-                    "----------------------------------------"
-            );
+                        System.out.println(
+                                        "Login endpoint: /api/login");
 
-            System.out.println(
-                    "University Management System API"
-            );
+                        System.out.println(
+                                        "Student endpoint: /api/students");
 
-            System.out.println(
-                    "Backend started successfully"
-            );
+                        System.out.println(
+                                        "Teacher endpoint: /api/teachers");
 
-            System.out.println(
-                    "Server listening on 0.0.0.0:" + port
-            );
+                        System.out.println(
+                                        "Student Leave endpoint: /api/student-leaves");
 
-            System.out.println(
-                    "Health endpoint: /api/health"
-            );
+                        System.out.println(
+                                        "Teacher Leave endpoint: /api/teacher-leaves");
 
-            System.out.println(
-                    "Login endpoint: /api/login"
-            );
+                        System.out.println(
+                                        "Marks endpoint: /api/marks");
 
-            System.out.println(
-                    "Student endpoint: /api/students"
-            );
+                        System.out.println(
+                                        "Fees endpoint: /api/fees");
 
-            System.out.println(
-                    "Teacher endpoint: /api/teachers"
-            );
+                        System.out.println(
+                                        "Student Fees endpoint: /api/student-fees");
 
-            System.out.println(
-                    "Student Leave endpoint: /api/student-leaves"
-            );
+                        System.out.println(
+                                        "----------------------------------------");
 
-            System.out.println(
-                    "Teacher Leave endpoint: /api/teacher-leaves"
-            );
+                } catch (IOException e) {
 
-            System.out.println(
-                    "Marks endpoint: /api/marks"
-            );
+                        System.out.println(
+                                        "Failed to start backend server");
 
-            System.out.println(
-                    "Fees endpoint: /api/fees"
-            );
-
-            System.out.println(
-                    "Student Fees endpoint: /api/student-fees"
-            );
-
-            System.out.println(
-                    "----------------------------------------"
-            );
-
-        } catch (IOException e) {
-
-            System.out.println(
-                    "Failed to start backend server"
-            );
-
-            e.printStackTrace();
+                        e.printStackTrace();
+                }
         }
-    }
 }
