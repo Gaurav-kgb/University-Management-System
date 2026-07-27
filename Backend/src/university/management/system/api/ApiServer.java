@@ -35,9 +35,15 @@ public class ApiServer {
 
                                                 ApiUtil.addCors(exchange);
 
+                                                if ("OPTIONS".equalsIgnoreCase(exchange.getRequestMethod())) {
+                                                        exchange.sendResponseHeaders(204, -1);
+                                                        exchange.close();
+                                                        return;
+                                                }
+
                                                 String response = "University Management System Backend is running";
 
-                                                exchange.getResponseHeaders().add(
+                                                exchange.getResponseHeaders().set(
                                                                 "Content-Type",
                                                                 "text/plain; charset=UTF-8");
 
@@ -48,7 +54,6 @@ public class ApiServer {
                                                                 responseBytes.length);
 
                                                 try (OutputStream os = exchange.getResponseBody()) {
-
                                                         os.write(responseBytes);
                                                 }
                                         });

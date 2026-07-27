@@ -16,10 +16,7 @@ public class LoginHandler implements HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
 
         // CORS headers for React
-        exchange.getResponseHeaders().add(
-                "Access-Control-Allow-Origin",
-                "http://localhost:5173"
-        );
+        ApiUtil.addCors(exchange);
 
         exchange.getResponseHeaders().add(
                 "Access-Control-Allow-Methods",
@@ -35,10 +32,12 @@ public class LoginHandler implements HttpHandler {
                 "Content-Type",
                 "application/json"
         );
+         ApiUtil.addCors(exchange);
 
         // Handle browser CORS preflight request
         if ("OPTIONS".equalsIgnoreCase(exchange.getRequestMethod())) {
             exchange.sendResponseHeaders(204, -1);
+             exchange.close();
             return;
         }
 

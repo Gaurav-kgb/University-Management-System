@@ -16,10 +16,7 @@ public class StudentHandler implements HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
 
         // Allow React frontend
-        exchange.getResponseHeaders().add(
-                "Access-Control-Allow-Origin",
-                "http://localhost:5173"
-        );
+        ApiUtil.addCors(exchange);
 
         exchange.getResponseHeaders().add(
                 "Access-Control-Allow-Methods",
